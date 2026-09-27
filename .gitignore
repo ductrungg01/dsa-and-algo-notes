@@ -1,0 +1,21 @@
+# C++ executables
+main
+*.out
+*.exe
+
+# Build directories
+build/
+cmake-build-*/
+
+# Valgrind
+valgrind.log
+
+# Generated test output
+output.txt
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
