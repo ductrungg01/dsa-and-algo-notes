@@ -53,7 +53,7 @@ void demo4() {
     cout << "Demo4  Enter a value: ";
     int x;
     cin >> x;
-    square(x); // This will not be evaluated at compile time since x is not a constant expression
+    // result = square(x); // This will not be evaluated at compile time since x is not a constant expression
 }
 
 int main() {

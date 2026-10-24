@@ -1,0 +1,1 @@
+Ref: https://wiki.vnoi.info/vi/algo/string/kmp
