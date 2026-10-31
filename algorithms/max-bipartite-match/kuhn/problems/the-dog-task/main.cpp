@@ -47,13 +47,23 @@ void solve()
     for (int i = 0; i < N - 1; ++i)
     {
         // hypot return sqrt(x*x + y*y) but is more accurate and avoids overflow
-        double d = hypot(bobRoutes[i + 1].x - bobRoutes[i].x, bobRoutes[i + 1].y - bobRoutes[i].y);
+        double d = hypot(
+            bobRoutes[i + 1].x - bobRoutes[i].x, 
+            bobRoutes[i + 1].y - bobRoutes[i].y
+        );
         for (int j = 0; j < M; ++j)
         {
-            double d1 = hypot(interestPlaces[j].x - bobRoutes[i].x, interestPlaces[j].y - bobRoutes[i].y);
-            double d2 = hypot(interestPlaces[j].x - bobRoutes[i + 1].x, interestPlaces[j].y - bobRoutes[i + 1].y);
+            double d1 = hypot(
+                interestPlaces[j].x - bobRoutes[i].x, 
+                interestPlaces[j].y - bobRoutes[i].y
+            );
+            double d2 = hypot(
+                interestPlaces[j].x - bobRoutes[i + 1].x, 
+                interestPlaces[j].y - bobRoutes[i + 1].y
+            );
 
             // The detour through P must not exeed twice the original segment length
+            // + EPS is used to avoid floating point precision issues
             if (d1 + d2 <= 2 * d + EPS)
                 adj[i].push_back(j);
         }
