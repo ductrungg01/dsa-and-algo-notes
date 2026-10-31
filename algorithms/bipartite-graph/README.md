@@ -1,5 +1,5 @@
 # Bipartite Graph
-
+![alt text](image.png)
 ## 1. What is a Bipartite Graph?
 
 A **bipartite graph** is a graph whose vertices can be divided into two disjoint sets, U and V, such that every edge connects a vertex in U to a vertex in V.
