@@ -3,6 +3,9 @@
 - https://www.geeksforgeeks.org/dsa/maximum-bipartite-matching/
 - https://www.geeksforgeeks.org/problems/maximum-bipartite-matching--170646/1
 
+<img width="327" height="319" alt="image" src="https://github.com/user-attachments/assets/aabfd953-415a-4f0a-b7f9-5b5a56e93cbd" />
+
+
 # Kuhn's Algorithm
 
 Kuhn's Algorithm is used to find the **Maximum Bipartite Matching** in a bipartite graph.
