@@ -12,9 +12,9 @@ int nk, np;
 // Example: cap = {2, 1} -> slotTopic = {1, 1, 2}
 vector<int> slotTopic;
 
-// topicOptions[t]: questions that can belong to topic t (right side of the graph).
-// Every slot of topic t is connected to all questions in topicOptions[t].
-vector<int> topicOptions[MAXK];
+// topicQuestions[t]: questions that can belong to topic t (right side of the graph).
+// Every slot of topic t is connected to all questions in topicQuestions[t].
+vector<int> topicQuestions[MAXK];
 
 int match[MAXP]; // match[q]: slot currently matched with question q (-1 if free)
 bool vis[MAXP];  // vis[q]: question q already visited in the current DFS
@@ -22,7 +22,7 @@ bool vis[MAXP];  // vis[q]: question q already visited in the current DFS
 bool try_kuhn(int slot)
 {
     const int topic = slotTopic[slot];
-    for (int question : topicOptions[topic])
+    for (int question : topicQuestions[topic])
     {
         if (vis[question])
             continue;
@@ -47,7 +47,7 @@ void read_input()
         while (c--)
             slotTopic.push_back(t);
 
-        topicOptions[t].clear();
+        topicQuestions[t].clear();
     }
 
     // Each question line: k followed by k topics it may belong to.
@@ -58,7 +58,7 @@ void read_input()
         while (k--)
         {
             int t; cin >> t;
-            topicOptions[t].push_back(q);
+            topicQuestions[t].push_back(q);
         }
     }
 }
