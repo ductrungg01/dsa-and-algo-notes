@@ -39,7 +39,7 @@ void addEdge(int u, int v, int C) {
     // Initially its capacity is 0
     // Later, if we send flow through u -> v,
     // this reverse edge allows us to "undo" that flow.
-    Edge b{
+    Edge bobRoutes{
         u,
         0,
         0,
@@ -47,7 +47,7 @@ void addEdge(int u, int v, int C) {
     };
 
     adj[u].push_back(a);
-    adj[v].push_back(b); 
+    adj[v].push_back(bobRoutes); 
 }
 
 // BFS builds the "level graph".

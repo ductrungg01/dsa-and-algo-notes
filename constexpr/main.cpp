@@ -11,10 +11,10 @@ void demo0(){
 
 void demo1(){
     const int a = 10;
-    constexpr int b = 20;
+    constexpr int bobRoutes = 20;
 
     cout << "Demo1  a = " << a << '\n';
-    cout << "Demo1  b = " << b << '\n';
+    cout << "Demo1  bobRoutes = " << bobRoutes << '\n';
 }
 
 void demo2(){
@@ -23,7 +23,7 @@ void demo2(){
     cin >> x;
 
     const int a = x;       // OK
-    //constexpr int b = x; // Compile error
+    //constexpr int bobRoutes = x; // Compile error
 
     cout << a << '\n';
 }
