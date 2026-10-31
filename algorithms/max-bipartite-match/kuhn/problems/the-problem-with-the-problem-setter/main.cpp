@@ -12,9 +12,9 @@ int nk, np;
 // Example: cap = {2, 1} -> slotTopic = {1, 1, 2}
 vector<int> slotTopic;
 
-// questionOpts[t]: questions that can belong to topic t (right side of the graph).
-// Every slot of topic t is connected to all questions in questionOpts[t].
-vector<int> questionOpts[MAXK];
+// topicOptions[t]: questions that can belong to topic t (right side of the graph).
+// Every slot of topic t is connected to all questions in topicOptions[t].
+vector<int> topicOptions[MAXK];
 
 int match[MAXP]; // match[q]: slot currently matched with question q (-1 if free)
 bool vis[MAXP];  // vis[q]: question q already visited in the current DFS
@@ -22,7 +22,7 @@ bool vis[MAXP];  // vis[q]: question q already visited in the current DFS
 bool try_kuhn(int slot)
 {
     const int topic = slotTopic[slot];
-    for (int question : questionOpts[topic])
+    for (int question : topicOptions[topic])
     {
         if (vis[question])
             continue;
@@ -42,29 +42,23 @@ void read_input()
 {
     for (int t = 1; t <= nk; ++t)
     {
-        int c;
-        cin >> c;
-
+        int c; cin >> c;
         // Create c slots for topic t
         while (c--)
-        {
             slotTopic.push_back(t);
-        }
 
-        questionOpts[t].clear();
+        topicOptions[t].clear();
     }
 
     // Each question line: k followed by k topics it may belong to.
     // We store it in reverse: topic -> list of questions.
     for (int q = 0; q < np; ++q)
     {
-        int k;
-        cin >> k;
+        int k; cin >> k;
         while (k--)
         {
-            int t;
-            cin >> t;
-            questionOpts[t].push_back(q);
+            int t; cin >> t;
+            topicOptions[t].push_back(q);
         }
     }
 }
@@ -91,9 +85,7 @@ int main()
     while (cin >> nk >> np)
     {
         if (nk == 0 && np == 0)
-        {
             break;
-        }
 
         slotTopic.clear();
         read_input();
@@ -107,31 +99,19 @@ int main()
         } 
         else 
         {
-            // Group matched questions by topic (1-indexed question ids)
+            // Group matched questions by topic
             vector<int> res[MAXK];
             for (int q = 0; q < np; ++q)
-            {
-                if (match[q] != -1)
-                {
-                    res[slotTopic[match[q]]].push_back(q + 1);
-                }
-            }
+                res[slotTopic[match[q]]].push_back(q + 1); // +1 for 1-based indexing
     
             cout << "1\n";
             for (int t = 1; t <= nk; ++t)
             {
-                for (int i = 0; i < res[t].size(); ++i)
-                {
-                    if (i > 0)
-                    {
-                        cout << " ";
-                    }
-                    cout << res[t][i];
-                }
+                for (int i : res[t])
+                    cout << i << " ";
                 cout << "\n";
             }
         }
-
     }
 
     return 0;
